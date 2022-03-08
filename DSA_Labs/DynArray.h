@@ -165,6 +165,11 @@ public:
 	// In:	_data			The item to be added
 	void Append(const Type& _data) {
 		// TODO: Implement this method
+		if (mSize >= mCapacity) {
+			Reserve();
+		}
+		mArray[mSize] = _date;
+		mSize += 1;
 	}
 
 	// Resizes the internal array, and copies all data over
