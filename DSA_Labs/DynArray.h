@@ -110,7 +110,16 @@ public:
 	//		This allows us to daisy-chain
 	DynArray& operator=(const DynArray& _assign) {
 		// TODO: Implement this method
-		return *this
+		if (this != _assign) {
+			this->mCapacity = _assign.mCapacity;
+			this->mSize = _assign.mSize;
+			mArray = new Type[_assign.mCapacity];
+			for (size_t i = 0; i < _assign.mCapacity; i++)
+			{
+				this->mArray[i] = _assign.mArray[i];
+			}
+		}
+		return *this;
 	}
 
 	// Clear
