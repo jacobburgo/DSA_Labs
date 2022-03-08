@@ -110,6 +110,7 @@ public:
 	//		This allows us to daisy-chain
 	DynArray& operator=(const DynArray& _assign) {
 		// TODO: Implement this method
+		return *this
 	}
 
 	// Clear
