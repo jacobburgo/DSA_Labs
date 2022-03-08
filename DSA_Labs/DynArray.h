@@ -175,6 +175,37 @@ public:
 	//	SPECIAL CASE: If mCapacity is 0, then it should be set to 1
 	void Reserve(size_t _newCapacity = 0) {
 		// TODO: Implement this method
+		if (_newCapacity == 0) {
+			if (mCapacity == 0) {
+				mCapacity = 1;
+				mArray = new Type[mCapacity];
+			}
+			else {
+				mCapacity *= 2;
+				Type* newArray = new Type[mCapacity];
+				for (size_t i = 0; i < mCapacity; i++)
+				{
+					newArray[i] = mArray[i];
+				}
+				delete[] mArray;
+				mArray = newArray;
+			}
+		}
+		else {
+			if (_newCapacity < mCapacity) {
+				return;
+			}
+			else {
+				mCapacity = _newCapacity;
+				Type* newArray = new Type[mCapacity];
+				for (size_t i = 0; i < mCapacity; i++)
+				{
+					newArray[i] = mArray[i];
+				}
+				delete[] mArray;
+				mArray = tempArray;
+			}
+		}
 	}
 };
 
