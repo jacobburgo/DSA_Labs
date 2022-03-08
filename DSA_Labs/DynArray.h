@@ -168,7 +168,7 @@ public:
 		if (mSize >= mCapacity) {
 			Reserve();
 		}
-		mArray[mSize] = _date;
+		mArray[mSize] = _data;
 		mSize += 1;
 	}
 
@@ -208,7 +208,7 @@ public:
 					newArray[i] = mArray[i];
 				}
 				delete[] mArray;
-				mArray = tempArray;
+				mArray = newArray;
 			}
 		}
 	}
