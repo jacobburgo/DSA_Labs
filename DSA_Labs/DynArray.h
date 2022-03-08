@@ -110,7 +110,7 @@ public:
 	//		This allows us to daisy-chain
 	DynArray& operator=(const DynArray& _assign) {
 		// TODO: Implement this method
-		if (this != _assign) {
+		if (this != &_assign) {
 			this->mCapacity = _assign.mCapacity;
 			this->mSize = _assign.mSize;
 			mArray = new Type[_assign.mCapacity];
