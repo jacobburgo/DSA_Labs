@@ -43,7 +43,7 @@ NOTE: If the unit test is not on, that code will not be compiled!
 #define LAB2_VECTOR_CLEAR				1
 #define LAB2_VECTOR_SORT_ASCENDING		0
 #define LAB2_VECTOR_SORT_DESCENDING		0
-#define LAB2_VECTOR_BRACKETS			0
+#define LAB2_VECTOR_BRACKETS			1
 #define LAB2_VECTOR_CONTAINS_TRUE		0
 #define LAB2_VECTOR_CONTAINS_FALSE		0
 #define LAB2_VECTOR_MOVE_PALINDROME		0
@@ -148,6 +148,7 @@ public:
 	// Get an individual element from the mValues vector
 	int operator[](int _index) {
 		// TODO: Implement this method
+		return mValues[_index];
 	}
 
 	// Determine if a value is present in the vector
