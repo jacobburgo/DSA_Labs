@@ -39,7 +39,7 @@ NOTE: If the unit test is not on, that code will not be compiled!
 // Individual unit test toggles
 #define LAB2_PALINDROME_NUMBER			1
 #define LAB2_VECTOR_FILL_FILE			1
-#define LAB2_VECTOR_FILL_ARRAY			0
+#define LAB2_VECTOR_FILL_ARRAY			1
 #define LAB2_VECTOR_CLEAR				0
 #define LAB2_VECTOR_SORT_ASCENDING		0
 #define LAB2_VECTOR_SORT_DESCENDING		0
@@ -124,6 +124,9 @@ public:
 	//		_size			The number of elements in the array
 	void Fill(const unsigned int* _arr, size_t _size) {
 		// TODO: Implement this method
+		for (size_t i = 0; i < _size; i++) {
+			mValues.push_back(_arr[i]);
+		}
 	}
 
 	// Remove all elements from vector and decrease capacity to 0
