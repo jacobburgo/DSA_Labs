@@ -41,12 +41,12 @@ NOTE: If the unit test is not on, that code will not be compiled!
 #define LAB2_VECTOR_FILL_FILE			1
 #define LAB2_VECTOR_FILL_ARRAY			1
 #define LAB2_VECTOR_CLEAR				1
-#define LAB2_VECTOR_SORT_ASCENDING		0
-#define LAB2_VECTOR_SORT_DESCENDING		0
+#define LAB2_VECTOR_SORT_ASCENDING		1
+#define LAB2_VECTOR_SORT_DESCENDING		1
 #define LAB2_VECTOR_BRACKETS			1
 #define LAB2_VECTOR_CONTAINS_TRUE		1
 #define LAB2_VECTOR_CONTAINS_FALSE		1
-#define LAB2_VECTOR_MOVE_PALINDROME		0
+#define LAB2_VECTOR_MOVE_PALINDROME		1
 
 /************/
 /* Includes */
@@ -143,6 +143,12 @@ public:
 	// NOTE: Use the std::sort method in this implementation
 	void Sort(bool _ascending) {
 		// TODO: Implement this method
+		if (!_ascending) {
+			std::sort(mValues.begin(), mValues.end(), std::greater<unsigned int>());
+		}
+		else {
+		std:sort(mValues.begin(), mValues.end());
+		}
 	}
 
 	// Get an individual element from the mValues vector
@@ -177,6 +183,12 @@ public:
 	//				remove it from the values vector
 	void MovePalindromes() {
 		// TODO: Implement this method
+		for (size_t i = 0; i < mValues.size(); i++) {
+			if (IsPalindromeNumber(mValues[i])) {
+				mPalindromes.push_back(mValues[i]);
+				mValues.erase(mValues.begin() + i);
+			}
+		}
 	}
 };
 
