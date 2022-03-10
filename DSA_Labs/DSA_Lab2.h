@@ -40,7 +40,7 @@ NOTE: If the unit test is not on, that code will not be compiled!
 #define LAB2_PALINDROME_NUMBER			1
 #define LAB2_VECTOR_FILL_FILE			1
 #define LAB2_VECTOR_FILL_ARRAY			1
-#define LAB2_VECTOR_CLEAR				0
+#define LAB2_VECTOR_CLEAR				1
 #define LAB2_VECTOR_SORT_ASCENDING		0
 #define LAB2_VECTOR_SORT_DESCENDING		0
 #define LAB2_VECTOR_BRACKETS			0
@@ -132,6 +132,8 @@ public:
 	// Remove all elements from vector and decrease capacity to 0
 	void Clear() {
 		// TODO: Implement this method
+		mValues.clear();
+		mValues.shrink_to_fit();
 	}
 
 	// Sort the vector
