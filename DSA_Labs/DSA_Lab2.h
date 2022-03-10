@@ -34,10 +34,10 @@ NOTE: If the unit test is not on, that code will not be compiled!
 */
 
 // Master toggle
-#define LAB_2	0
+#define LAB_2	1
 
 // Individual unit test toggles
-#define LAB2_PALINDROME_NUMBER			0
+#define LAB2_PALINDROME_NUMBER			1
 #define LAB2_VECTOR_FILL_FILE			0
 #define LAB2_VECTOR_FILL_ARRAY			0
 #define LAB2_VECTOR_CLEAR				0
@@ -66,6 +66,21 @@ NOTE: If the unit test is not on, that code will not be compiled!
 // Return: True, if the number is a palindrome number
 inline bool IsPalindromeNumber(unsigned int _num) {
 	// TODO: Implement this method
+	int testNum = _num, digit, palNum = 0;
+	bool isPalindrome;
+	while (testNum != 0) {
+		digit = testNum % 10;
+		palNum = (palNum * 10) + digit;
+		testNum = testNum / 10;
+	}
+
+	if (_num == palNum) {
+		isPalindrome = true;
+	}
+	else {
+		isPalindrome = false;
+	}
+	return isPalindrome;
 }
 
 class DSA_Lab2
@@ -100,7 +115,7 @@ public:
 		// TODO: Implement this method
 	}
 
-	// Sort the vector 
+	// Sort the vector
 	//
 	// In:	_ascending		To sort in ascending order or not
 	//
@@ -115,7 +130,7 @@ public:
 	}
 
 	// Determine if a value is present in the vector
-	// 
+	//
 	// In:	_val		The value to check for
 	//
 	// Return: True, if the value is present
