@@ -38,7 +38,7 @@ NOTE: If the unit test is not on, that code will not be compiled!
 
 // Individual unit test toggles
 #define LAB2_PALINDROME_NUMBER			1
-#define LAB2_VECTOR_FILL_FILE			0
+#define LAB2_VECTOR_FILL_FILE			1
 #define LAB2_VECTOR_FILL_ARRAY			0
 #define LAB2_VECTOR_CLEAR				0
 #define LAB2_VECTOR_SORT_ASCENDING		0
@@ -100,6 +100,22 @@ public:
 	// In:	_input		Name of the file to open
 	void Fill(const char* _input) {
 		// TODO: Implement this method
+		std::ifstream binInput(_input, std::ios::binary);
+		int tempInt, intNumInFile, byteCount = 0;
+		while (true) {
+			binInput.read((char*)&tempInt, 4);
+			byteCount += 4;
+			if (binInput.eof()) {
+				break;
+			}
+			else if (byteCount == 4) {
+				intNumInFile = tempInt;
+			}
+			else {
+				mValues.push_back(tempInt);
+			}
+		}
+		binInput.close();
 	}
 
 	// Fill out the mValues vector with the contents of an array
