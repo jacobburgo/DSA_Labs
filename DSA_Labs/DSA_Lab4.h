@@ -38,8 +38,8 @@ NOTE: If the unit test is not on, that code will not be compiled!
 // Individual unit test toggles
 #define LIST_QUEUE_ADD				1
 #define LIST_STACK_ADD				1
-#define LIST_QUEUE_REMOVE			0
-#define LIST_STACK_REMOVE			0
+#define LIST_QUEUE_REMOVE			1
+#define LIST_STACK_REMOVE			1
 #define LIST_INSERT_INDEX			0
 #define LIST_INSERT_ITER			0
 #define LIST_REMOVE_DECIMAL			0
@@ -90,6 +90,9 @@ public:
 	// Return: The value that was removed
 	float QueueOrderingRemove() {
 		// TODO: Implement this method
+		float removedVal = *mList.begin();
+		mList.pop_front();
+		return removedVal;
 	}
 
 	// Remove a single value from the list using stack ordering
@@ -97,6 +100,9 @@ public:
 	// Return: The value that was removed
 	float StackOrderingRemove() {
 		// TODO: Implement this method
+		float removedVal = *mList.begin();
+		mList.pop_back();
+		return removedVal;
 	}
 
 	// Insert a value _index nodes away from the head node

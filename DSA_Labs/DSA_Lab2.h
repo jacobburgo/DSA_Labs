@@ -147,7 +147,7 @@ public:
 			std::sort(mValues.begin(), mValues.end(), std::greater<unsigned int>());
 		}
 		else {
-		std:sort(mValues.begin(), mValues.end());
+			std::sort(mValues.begin(), mValues.end());
 		}
 	}
 
