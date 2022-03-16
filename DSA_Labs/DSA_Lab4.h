@@ -32,13 +32,12 @@ How to use:
 NOTE: If the unit test is not on, that code will not be compiled!
 */
 
-
 // Master toggle
-#define LAB_4	0
+#define LAB_4	1
 
 // Individual unit test toggles
-#define LIST_QUEUE_ADD				0
-#define LIST_STACK_ADD				0
+#define LIST_QUEUE_ADD				1
+#define LIST_STACK_ADD				1
 #define LIST_QUEUE_REMOVE			0
 #define LIST_STACK_REMOVE			0
 #define LIST_INSERT_INDEX			0
@@ -53,7 +52,6 @@ NOTE: If the unit test is not on, that code will not be compiled!
 #if LAB_4
 
 class DSA_Lab4 {
-
 	friend class DSA_TestSuite_Lab4;	// Giving access to test code
 
 	// Data members
@@ -67,7 +65,11 @@ public:
 	//		_size			The number of elements in the array
 	void QueueOrderingAdd(const float* _arr, size_t _size) {
 		// TODO: Implement this method
-
+		mList.clear();
+		for (size_t i = 0; i < _size; i++)
+		{
+			mList.push_back(_arr[i]);
+		}
 	}
 
 	// Add all of the values from the array into the list using queue ordering
@@ -76,32 +78,34 @@ public:
 	//		_size			The number of elements in the array
 	void StackOrderingAdd(const float* _arr, size_t _size) {
 		// TODO: Implement this method
-		
+		mList.clear();
+		for (size_t i = 0; i < _size; i++)
+		{
+			mList.push_front(_arr[i]);
+		}
 	}
 
 	// Remove a single value from the list using queue ordering
 	//
 	// Return: The value that was removed
-	float QueueOrderingRemove()	{
+	float QueueOrderingRemove() {
 		// TODO: Implement this method
-
 	}
 
 	// Remove a single value from the list using stack ordering
 	//
 	// Return: The value that was removed
-	float StackOrderingRemove()	{
+	float StackOrderingRemove() {
 		// TODO: Implement this method
-
 	}
 
 	// Insert a value _index nodes away from the head node
 	//		If _index is 0 - insert in front of the head/front node
 	//		If _index is 5 - insert in front of the 5th node in the list
 	//
-	// Example:	
+	// Example:
 	//			0<-[5]<->[1]<->[6]<->[4]<->[2]->0
-	//	
+	//
 	// Inserting a 7 at index 2
 	//
 	//			0<-[5]<->[1]<->[7]<->[6]<->[4]<->[2]->0
@@ -109,18 +113,16 @@ public:
 	//
 	// In:	_index		The "index" to add at
 	//		_val		The value to insert
-	void Insert(int _index, float _val)	{
+	void Insert(int _index, float _val) {
 		// TODO: Implement this method
-
 	}
 
 	// Insert a value at the spot specified by the iterator passed in
-	// 
+	//
 	// In:	_iter		The iterator at the place to insert
 	//		_val		The value to insert
 	void Insert(std::list<float>::iterator _iter, float _val) {
 		// TODO: Implement this method
-
 	}
 
 	// Remove all values from mList that have a decimal place > _decimal
@@ -130,10 +132,8 @@ public:
 	//
 	// Return: The total number of values removed
 
-
 	int RemoveDecimalGreater(float _decimal) {
 		// TODO: Implement this method
-		
 	}
 };
 #endif	// End LAB_4
