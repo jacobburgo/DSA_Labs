@@ -33,16 +33,16 @@ NOTE: If the unit test is not on, that code will not be compiled!
 */
 
 // Master toggle
-#define LAB_4	1
+#define LAB_4	0
 
 // Individual unit test toggles
 #define LIST_QUEUE_ADD				1
 #define LIST_STACK_ADD				1
 #define LIST_QUEUE_REMOVE			1
 #define LIST_STACK_REMOVE			1
-#define LIST_INSERT_INDEX			0
-#define LIST_INSERT_ITER			0
-#define LIST_REMOVE_DECIMAL			0
+#define LIST_INSERT_INDEX			1
+#define LIST_INSERT_ITER			1
+#define LIST_REMOVE_DECIMAL			1
 
 /************/
 /* Includes */
@@ -121,6 +121,9 @@ public:
 	//		_val		The value to insert
 	void Insert(int _index, float _val) {
 		// TODO: Implement this method
+		std::list<float>::iterator iter = mList.begin();
+		advance(iter, _index);
+		mList.insert(iter, _val);
 	}
 
 	// Insert a value at the spot specified by the iterator passed in
@@ -129,6 +132,7 @@ public:
 	//		_val		The value to insert
 	void Insert(std::list<float>::iterator _iter, float _val) {
 		// TODO: Implement this method
+		mList.insert(_iter, _val);
 	}
 
 	// Remove all values from mList that have a decimal place > _decimal
@@ -140,6 +144,20 @@ public:
 
 	int RemoveDecimalGreater(float _decimal) {
 		// TODO: Implement this method
+		double whoCares;
+		float remainder;
+		int numRemoved = 0;
+		for (std::list<float>::iterator iter = mList.begin(); iter != mList.end();) {
+			remainder = (float)modf(*iter, &whoCares);
+			if (remainder > _decimal) {
+				iter = mList.erase(iter);
+				numRemoved++;
+			}
+			else {
+				iter++;
+			}
+		}
+		return numRemoved;
 	}
 };
 #endif	// End LAB_4

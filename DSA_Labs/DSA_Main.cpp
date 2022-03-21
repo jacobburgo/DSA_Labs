@@ -9,7 +9,7 @@ Purpose:		Main file for SDV2213 Labs
 				Contains menu code and calls to all unit tests
 Notes:			Property of Full Sail University
 
-				DO NOT CHANGE ANY CODE IN THIS FILE BEYOND 
+				DO NOT CHANGE ANY CODE IN THIS FILE BEYOND
 				CHECKING FOR MEMORY LEAKS
 */
 
@@ -35,7 +35,6 @@ Notes:			Property of Full Sail University
 
 // Enables memory leak detection
 #define _CRTDBG_MAP_ALLOC
-
 
 #define LAB1	'1'
 #define LAB2	'2'
@@ -81,7 +80,6 @@ void Lab8Tests();
 
 // Entry point of the program
 int main() {
-
 	// Memory leak detection code
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	// This function call will set a breakpoint at the location of a leaked block
@@ -95,9 +93,8 @@ int main() {
 	char choice = -1;
 	bool exitLoop = false;
 
-	// Main menu loop	
+	// Main menu loop
 	while (!exitLoop) {
-
 		// Clear the screen
 		system("cls");
 
@@ -119,44 +116,44 @@ int main() {
 
 		system("cls");
 		switch (choice) {
-			case LAB1:
-				Lab1Tests();
-				system("pause");
-				break;
-			case LAB2:
-				Lab2Tests();
-				system("pause");
-				break;
-			case LAB3:
-				Lab3Tests();
-				system("pause");
-				break;
-			case LAB4:
-				Lab4Tests();
-				system("pause");
-				break;
-			case LAB5:
-				Lab5Tests();
-				system("pause");
-				break;
-			case LAB6:
-				Lab6Tests();
-				system("pause");
-				break;
-			case LAB7:
-				Lab7Tests();
-				system("pause");
-				break;
-			case LAB8:
-				Lab8Tests();
-				system("pause");
-				break;
-			case VERBOSE:
-				verboseMode = !verboseMode;
-				break;
-			default:
-				std::cout << "Invalid selection";
-				break;
+		case LAB1:
+			Lab1Tests();
+			system("pause");
+			break;
+		case LAB2:
+			Lab2Tests();
+			system("pause");
+			break;
+		case LAB3:
+			Lab3Tests();
+			system("pause");
+			break;
+		case LAB4:
+			Lab4Tests();
+			system("pause");
+			break;
+		case LAB5:
+			Lab5Tests();
+			system("pause");
+			break;
+		case LAB6:
+			Lab6Tests();
+			system("pause");
+			break;
+		case LAB7:
+			Lab7Tests();
+			system("pause");
+			break;
+		case LAB8:
+			Lab8Tests();
+			system("pause");
+			break;
+		case VERBOSE:
+			verboseMode = !verboseMode;
+			break;
+		default:
+			std::cout << "Invalid selection";
+			break;
 		}
 
 		std::cout << "\n\n";
@@ -165,20 +162,18 @@ int main() {
 	return 0;
 }
 
-
 // Displays the lab option menu to the console window
 void DisplayMenu() {
 	std::cout << "1) Lab 1 - DynArray\n"
-			  << "2) Lab 2 - vector\n"
-			  << "3) Lab 3 - DList\n"
-			  << "4) Lab 4 - list\n"
-			  << "5) Lab 5 - Dictionary\n"
-			  << "6) Lab 6 - unordered_map\n"
-			  << "7) Lab 7 - BST\n"
-			  << "8) Lab 8 - Huffman compression\n"
-			  << "0) Exit\n\n"
-			  << "T) Toggle verbose mode " << (!verboseMode ? "on" : "off") << "\n";
-
+		<< "2) Lab 2 - vector\n"
+		<< "3) Lab 3 - DList\n"
+		<< "4) Lab 4 - list\n"
+		<< "5) Lab 5 - Dictionary\n"
+		<< "6) Lab 6 - unordered_map\n"
+		<< "7) Lab 7 - BST\n"
+		<< "8) Lab 8 - Huffman compression\n"
+		<< "0) Exit\n\n"
+		<< "T) Toggle verbose mode " << (!verboseMode ? "on" : "off") << "\n";
 }
 
 // Runs the Lab 1 Unit Tests
@@ -299,58 +294,58 @@ void Lab3Tests() {
 #if LIST_ADDHEAD_EMPTY
 	DSA_TestSuite_Lab3::LinkedListAddHeadEmpty();
 #endif
-#if LIST_ADDHEAD				
+#if LIST_ADDHEAD
 	DSA_TestSuite_Lab3::LinkedListAddHeadExisting();
 #endif
-#if LIST_ADDTAIL_EMPTY			
+#if LIST_ADDTAIL_EMPTY
 	DSA_TestSuite_Lab3::LinkedListAddTailEmpty();
 #endif
-#if LIST_ADDTAIL				
+#if LIST_ADDTAIL
 	DSA_TestSuite_Lab3::LinkedListAddTailExisting();
 #endif
-#if LIST_CLEAR					
+#if LIST_CLEAR
 	DSA_TestSuite_Lab3::LinkedListClear();
 #endif
 #if LIST_DTOR
 	DSA_TestSuite_Lab3::LinkedListDestructor();
 #endif
-#if LIST_ITER_BEGIN				
+#if LIST_ITER_BEGIN
 	DSA_TestSuite_Lab3::LinkedListIterBegin();
 #endif
-#if LIST_ITER_END				
+#if LIST_ITER_END
 	DSA_TestSuite_Lab3::LinkedListIterEnd();
 #endif
-#if LIST_ITER_INCREMENT_PRE		
+#if LIST_ITER_INCREMENT_PRE
 	DSA_TestSuite_Lab3::LinkedListIterPreIncrement();
 #endif
-#if LIST_ITER_INCREMENT_POST	
+#if LIST_ITER_INCREMENT_POST
 	DSA_TestSuite_Lab3::LinkedListIterPostIncrement();
 #endif
-#if LIST_ITER_DECREMENT_PRE		
+#if LIST_ITER_DECREMENT_PRE
 	DSA_TestSuite_Lab3::LinkedListIterPreDecrement();
 #endif
-#if LIST_ITER_DECREMENT_POST	
+#if LIST_ITER_DECREMENT_POST
 	DSA_TestSuite_Lab3::LinkedListIterPostDecrement();
 #endif
-#if LIST_INSERT_EMPTY			
+#if LIST_INSERT_EMPTY
 	DSA_TestSuite_Lab3::LinkedListInsertEmpty();
 #endif
-#if LIST_INSERT_HEAD			
+#if LIST_INSERT_HEAD
 	DSA_TestSuite_Lab3::LinkedListInsertHead();
 #endif
-#if LIST_INSERT					
+#if LIST_INSERT
 	DSA_TestSuite_Lab3::LinkedListInsertMiddle();
 #endif
-#if LIST_ERASE_EMPTY			
+#if LIST_ERASE_EMPTY
 	DSA_TestSuite_Lab3::LinkedListEraseEmpty();
 #endif
-#if LIST_ERASE_HEAD				
+#if LIST_ERASE_HEAD
 	DSA_TestSuite_Lab3::LinkedListEraseHead();
 #endif
-#if LIST_ERASE_TAIL				
+#if LIST_ERASE_TAIL
 	DSA_TestSuite_Lab3::LinkedListEraseTail();
 #endif
-#if LIST_ERASE					
+#if LIST_ERASE
 	DSA_TestSuite_Lab3::LinkedListEraseMiddle();
 #endif
 #if LIST_COPY_CTOR_INT
@@ -366,7 +361,7 @@ void Lab3Tests() {
 	DSA_TestSuite_Lab3::LinkedListAssignmentOperatorClass();
 #endif
 #else
-	std::cout << "LAB_3 is not toggled on in DList.h\n"; 
+	std::cout << "LAB_3 is not toggled on in DList.h\n";
 #endif	// End LAB_3
 }
 

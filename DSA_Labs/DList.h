@@ -32,9 +32,8 @@ How to use:
 NOTE: If the unit test is not on, that code will not be compiled!
 */
 
-
 // Master toggle
-#define LAB_3	0
+#define LAB_3	1
 
 // Individual unit test toggles
 #define LIST_CTOR						0
@@ -52,9 +51,9 @@ NOTE: If the unit test is not on, that code will not be compiled!
 #define LIST_ITER_INCREMENT_POST		0
 #define LIST_ITER_DECREMENT_PRE			0
 #define LIST_ITER_DECREMENT_POST		0
-#define LIST_INSERT_EMPTY				0
-#define LIST_INSERT_HEAD				0
-#define LIST_INSERT						0
+#define LIST_INSERT_EMPTY				1
+#define LIST_INSERT_HEAD				1
+#define LIST_INSERT						1
 #define LIST_ERASE_EMPTY				0
 #define LIST_ERASE_HEAD					0
 #define LIST_ERASE_TAIL					0
@@ -68,7 +67,6 @@ NOTE: If the unit test is not on, that code will not be compiled!
 
 template<typename T>
 class DList {
-
 	friend class DSA_TestSuite_Lab3;	// Giving access to test code
 
 	struct Node {
@@ -76,7 +74,13 @@ class DList {
 		Node* next, * prev;
 		Node(const T& _data, Node* _next = nullptr, Node* _prev = nullptr) {
 			// TODO: Implement this method
-			
+			data = _data;
+			next = _next;
+			prev = _prev;
+		}
+		Node() {
+			next = nullptr;
+			prev = nullptr;
 		}
 	};
 
@@ -90,7 +94,7 @@ public:
 		// Pre-fix increment operator
 		//
 		// Return: Invoking object with curr pointing to next node
-		// 
+		//
 		// Example:
 		//		I - Iterator's curr
 		//		R - Return
@@ -108,7 +112,9 @@ public:
 		*/
 		Iterator& operator++() {
 			// TODO: Implement this method
-			
+			mCurr = mCurr->next;
+			this->mCurr = mCurr;
+			return *this;
 		}
 
 		// Post-fix increment operator
@@ -116,7 +122,7 @@ public:
 		// In:	(unused)		Post-fix operators take in an unused int, so that the compiler can differentiate
 		//
 		// Return:	An iterator that has its curr pointing to the "old" curr
-		// NOTE:	Will need a temporary iterator 
+		// NOTE:	Will need a temporary iterator
 		//
 		// Example:
 		//		I - Iterator's curr
@@ -135,7 +141,10 @@ public:
 		*/
 		Iterator operator++(int) {
 			// TODO: Implement this method
-			
+			Iterator* tempIter = new Iterator;
+			tempIter->mCurr = mCurr;
+			mCurr = mCurr->next;
+			return *tempIter;
 		}
 
 		// Pre-fix decrement operator
@@ -159,7 +168,9 @@ public:
 		*/
 		Iterator& operator--() {
 			// TODO: Implement this method
-			
+			mCurr = mCurr->prev;
+			this->mCurr = mCurr;
+			return *this;
 		}
 
 		// Post-fix decrement operator
@@ -167,7 +178,7 @@ public:
 		// In:	(unused)		Post-fix operators take in an unused int, so that the compiler can differentiate
 		//
 		// Return:	An iterator that has its curr pointing to the "old" curr
-		// NOTE:	Will need a temporary iterator 
+		// NOTE:	Will need a temporary iterator
 		//
 		// Example:
 		//		I - Iterator's curr
@@ -186,7 +197,8 @@ public:
 		*/
 		Iterator operator--(int) {
 			// TODO: Implement this method
-			
+			mCurr = mCurr->prev;
+			return this;
 		}
 
 		// Dereference operator
@@ -194,11 +206,11 @@ public:
 		// Return: The data the curr is pointing to
 		T& operator*() {
 			// TODO: Implement this method
-			
+			return mCurr.data;
 		}
 
 		// Not-equal operator (used for testing)
-		// 
+		//
 		// In:	_iter		The iterator to compare against
 		//
 		// Return: True, if the iterators are not pointing to the same node
@@ -218,14 +230,18 @@ public:
 	//		Creates a new empty linked list
 	DList() {
 		// TODO: Implement this method
-		
+		mHead = nullptr;
+		mTail = mHead;
 	}
 
 	// Destructor
 	//		Cleans up all dynamically allocated memory
 	~DList() {
 		// TODO: Implement this method
-		
+		for (Node* walk = mHead; walk != nullptr; walk = mHead) {
+			mHead = mHead->next;
+			delete walk;
+		}
 	}
 
 	// Copy constructor
@@ -234,7 +250,9 @@ public:
 	// In:	_copy			The object to copy from
 	DList(const DList& _copy) {
 		// TODO: Implement this method
-
+		for (Node* walk = _copy.mHead; walk != nullptr; walk = walk->next) {
+			AddHead(walk->data);
+		}
 	}
 
 	// Assignment operator
@@ -245,7 +263,10 @@ public:
 	//		This allows us to daisy-chain
 	DList& operator=(const DList& _assign) {
 		// TODO: Implement this method
-		
+		for (Node* walk = _assign.mHead; walk != nullptr; walk = walk->next) {
+			AddHead(walk->data);
+		}
+		return *this;
 	}
 
 private:
@@ -255,7 +276,6 @@ private:
 // In:	_curr		The current Node to copy
 	void RecursiveCopy(const Node* _curr) {
 		// TODO (optional): Implement this method
-
 	}
 
 public:
@@ -265,7 +285,16 @@ public:
 // In:	_data			The object to add to the list
 	void AddHead(const T& _data) {
 		// TODO: Implement this method
-		
+		Node* tempNode = new Node(_data);
+		if (mHead == nullptr) {
+			mHead = tempNode;
+			mTail = tempNode;
+		}
+		else {
+			tempNode->next = mHead;
+			mHead = tempNode;
+		}
+		mSize += 1;
 	}
 
 	// Add a piece of data to the end of the list
@@ -273,24 +302,44 @@ public:
 // In:	_data			The object to add to the list
 	void AddTail(const T& _data) {
 		// TODO: Implement this method
-		
+		Node* tempNode = new Node(_data);
+		if (mHead == nullptr) {
+			mTail = tempNode;
+			mHead = mTail;
+		}
+		else {
+			tempNode->next = mTail;
+			mTail = tempNode;
+		}
+		mSize += 1;
 	}
 
 	// Clear the list of all dynamic memory
 	//			Resets the list to its default state
 	void Clear() {
 		// TODO: Implement this method
-		
+		// JACOB'S COMMENT: I tried this one before I watched the lecture since this and the destructor gave me so many problems last time.
+		Node* walk = mHead;
+		while (walk != nullptr) {
+			if (walk->next == nullptr) break;
+			walk = walk->next;
+			delete walk->prev;
+		}
+		delete walk;
+		mSize = 0;
+		mTail = nullptr;
+		mHead = nullptr;
 	}
 
 private:
 
 	// Optional recursive helper method for use with Clear
-	// 
+	//
 	// In:	_curr		The current Node to clear
 	void RecursiveClear(const Node* _curr) {
 		// TODO (Optional): Implement this method
-
+		// I should have re-read the lab before I started hacking away at it.
+		// I forgot about this one.
 	}
 
 public:
@@ -316,7 +365,23 @@ public:
 	// SPECIAL CASE:	Inserting at head or empty list
 	// NOTE:	The iterator should now be pointing to the new node created
 	Iterator Insert(Iterator& _iter, const T& _data) {
-	
+		if (mHead == nullptr) {
+			Node* tempNode = new Node(_data);
+			_iter.mCurr = tempNode;
+			mHead = _iter.mCurr;
+			mTail = _iter.mCurr;
+			mSize += 1;
+		}
+		else if (_iter.mCurr == mHead) {
+			this->AddHead(_data);
+			_iter.mCurr = mHead;
+		}
+		else {
+			Node* tempNode = new Node(_data, _iter.mCurr->next, _iter.mCurr->prev);
+			_iter.mCurr = tempNode;
+			mSize += 1;
+		}
+		return _iter;
 	}
 
 	// Erase a Node from the list
@@ -341,23 +406,54 @@ public:
 	// NOTE:	The iterator should now be pointing at the node after the one erased
 	Iterator Erase(Iterator& _iter) {
 		// TODO: Implement this method
-
+		if (_iter.mCurr == mHead && _iter.mCurr == mTail) {
+			return _iter;
+		}
+		else if (_iter.mCurr == mHead) {
+			mHead = mHead->next;
+			delete mHead->prev;
+			mHead->prev = nullptr;
+			_iter.mCurr = mHead;
+			mSize--;
+		}
+		else if (_iter.mCurr == mTail) {
+			mTail = mTail->prev;
+			delete mTail->next;
+			mTail->next = nullptr;
+			_iter.mCurr = mTail->next;;
+			mSize--;
+		}
+		else {
+			Node* prevNode = _iter.mCurr->prev;
+			Node* nextNode = _iter.mCurr->next;
+			Node* delNode = _iter.mCurr;
+			prevNode->next = nextNode;
+			nextNode->prev = prevNode;
+			_iter.mCurr = nextNode;
+			delete delNode;
+			mSize--;
+		}
+		return _iter;
 	}
 
 	// Set an Iterator at the front of the list
-	// 
+	//
 	// Return: An iterator that has its curr pointing to the list's head
 	Iterator Begin() {
 		// TODO: Implement this method
-		
+		Iterator* tempIter = new Iterator;
+		tempIter->mCurr = mHead;
+		return *tempIter;
 	}
 
 	// Set an Iterator pointing to the end of the list
-	// 
+	//
 	// Return: An iterator that has its curr pointing to a null pointer
 	Iterator End() {
 		// TODO: Implement this method
-		
+		Iterator* tempIter = new Iterator;
+		tempIter->mCurr = mTail->next;
+		return *tempIter;
 	}
 };
 
