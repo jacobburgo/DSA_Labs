@@ -33,7 +33,7 @@ NOTE: If the unit test is not on, that code will not be compiled!
 */
 
 // Master toggle
-#define LAB_3	1
+#define LAB_3	0
 
 // Individual unit test toggles
 #define LIST_CTOR						0
@@ -51,9 +51,9 @@ NOTE: If the unit test is not on, that code will not be compiled!
 #define LIST_ITER_INCREMENT_POST		0
 #define LIST_ITER_DECREMENT_PRE			0
 #define LIST_ITER_DECREMENT_POST		0
-#define LIST_INSERT_EMPTY				1
-#define LIST_INSERT_HEAD				1
-#define LIST_INSERT						1
+#define LIST_INSERT_EMPTY				0
+#define LIST_INSERT_HEAD				0
+#define LIST_INSERT						0
 #define LIST_ERASE_EMPTY				0
 #define LIST_ERASE_HEAD					0
 #define LIST_ERASE_TAIL					0

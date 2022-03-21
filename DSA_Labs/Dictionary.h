@@ -32,13 +32,12 @@ How to use:
 NOTE: If the unit test is not on, that code will not be compiled!
 */
 
-
 // Master toggle
-#define LAB_5	0
+#define LAB_5	1
 
 // Individual unit test toggles
-#define DICT_CTOR					0
-#define DICT_PAIR_CTOR				0
+#define DICT_CTOR					1
+#define DICT_PAIR_CTOR				1
 #define DICT_DTOR					0
 #define DICT_CLEAR					0
 #define DICT_INSERT					0
@@ -59,7 +58,6 @@ NOTE: If the unit test is not on, that code will not be compiled!
 
 template<typename Key, typename Value>
 class Dictionary {
-
 	friend class DSA_TestSuite_Lab5;	// Giving access to test code
 
 	// The objects stored in the hash-table
@@ -72,6 +70,8 @@ class Dictionary {
 		//		_value
 		Pair(const Key& _key, const Value& _value) {
 			// TODO: Implement this method
+			key = _key;
+			value = _value;
 		}
 
 		// For testing
@@ -85,14 +85,19 @@ class Dictionary {
 	size_t mNumBuckets;						// Number of elements in mTable
 	unsigned int(*mHashFunc)(const Key&);	// Pointer to the hash function
 
-
 public:
 
 	// Constructor
 	// In:	_numBuckets			The number of elements to allocate
 	//		_hashFunc			The hashing function to be used
-	Dictionary(size_t _numBuckets, unsigned int (*_hashFunc)(const Key&))  {
+	Dictionary(size_t _numBuckets, unsigned int (*_hashFunc)(const Key&)) {
 		// TODO: Implement this method
+		mNumBuckets = _numBuckets;
+		mHashFunc = _hashFunc;
+
+		for (size_t i = 0; i < _numBuckets; i++) {
+			mTable[mHashFunc(Key)];
+		}
 	}
 
 	// Destructor
@@ -106,7 +111,6 @@ public:
 	// In:	_copy				The object to copy from
 	Dictionary(const Dictionary& _copy) {
 		// TODO: Implement this method
-
 	}
 
 	// Assignment operator
@@ -127,7 +131,7 @@ public:
 	}
 
 	// Insert an item into the table
-	// In:	_key		The key to add at	
+	// In:	_key		The key to add at
 	//		_value		The value at the key
 	//
 	// NOTE:	If there is already an item at the provided key, overwrite it.
@@ -136,7 +140,7 @@ public:
 	}
 
 	// Find a value at a specified key
-	// In:	_key		The key to search for	
+	// In:	_key		The key to search for
 	//
 	// Return: A const pointer to the value at the searched key
 	// NOTE:		Return a null pointer if key is not present
