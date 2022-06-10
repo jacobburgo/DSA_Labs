@@ -87,14 +87,6 @@ DATA STRUCTURES AND ALGORITHMS - ONLINE
 
 :back: | "back"
 
-:bacon: | "bacon"
-
-:badger: | "badger"
-
-:bald_man: | "bald_man"
-
-:balloon: | "balloon"
-
 :ballot_box_with_check: | "ballot_box_with_check"
 
 :bangbang: | "bangbang"
