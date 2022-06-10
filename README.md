@@ -13,12 +13,6 @@ DATA STRUCTURES AND ALGORITHMS - ONLINE
 
 :3rd_place_medal: | "3rd_place_medal"
 
-:accept: | "accept"
-
-:adhesive_bandage: | "adhesive_bandage"
-
-:adult: | "adult"
-
 :airplane: | "airplane"
 
 :alarm_clock: | "alarm_clock"
