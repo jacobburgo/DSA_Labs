@@ -99,23 +99,11 @@ DATA STRUCTURES AND ALGORITHMS - ONLINE
 
 :biohazard: | "biohazard"
 
-:birthday: | "birthday"
-
-:black_flag: | "black_flag"
-
-:black_heart: | "black_heart"
-
-:black_nib: | "black_nib"
-
 :bomb: | "bomb"
 
 :boom: | "boom"
 
 :boomerang: | "boomerang"
-
-:boot: | "boot"
-
-:bouquet: | "bouquet"
 
 :bow_and_arrow: | "bow_and_arrow"
 
@@ -127,13 +115,9 @@ DATA STRUCTURES AND ALGORITHMS - ONLINE
 
 :broken_heart: | "broken_heart"
 
-:brown_heart: | "brown_heart"
-
 :bug: | "bug"
 
 :bulb: | "bulb"
-
-:burrito: | "burrito"
 
 :business_suit_levitating: | "business_suit_levitating"
 
@@ -146,8 +130,6 @@ DATA STRUCTURES AND ALGORITHMS - ONLINE
 :camera_flash: | "camera_flash"
 
 :camping: | "camping"
-
-:candy: | "candy"
 
 :chains: | "chains"
 
