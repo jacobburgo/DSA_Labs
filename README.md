@@ -81,27 +81,11 @@ DATA STRUCTURES AND ALGORITHMS - ONLINE
 
 :baby: | "baby"
 
-:baby_chick: | "baby_chick"
-
-:baby_symbol: | "baby_symbol"
-
 :back: | "back"
 
 :ballot_box_with_check: | "ballot_box_with_check"
 
 :bangbang: | "bangbang"
-
-:bank: | "bank"
-
-:baseball: | "baseball"
-
-:basket: | "basket"
-
-:basketball: | "basketball"
-
-:bat: | "bat"
-
-:bathtub: | "bathtub"
 
 :battery: | "battery"
 
